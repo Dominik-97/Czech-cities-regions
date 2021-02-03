@@ -57,6 +57,14 @@ def convert_to_xml(CSV_path, XML_path):
 
 
 def make_json(CSV_path, JSON_path):
+    """
+    Function to convert the whole csv into JSON.
+
+    Arguments:
+        CSV path, JSON path
+    Returns:
+        JSON file
+    """
     data = {}
 
     with open(CSV_path, encoding='UTF-8') as csvf:
@@ -68,9 +76,19 @@ def make_json(CSV_path, JSON_path):
     with open(JSON_path, 'w', encoding='utf-8') as jsonf:
         jsonf.write(json.dumps(data, indent=4, ensure_ascii=False))
 
+
 def make_xlsx(CSV_path, XLSX_path):
+    """
+    Function to convert the whole csv into an Excel file.
+
+    Arguments:
+        CSV path, Excel file path
+    Returns:
+        Excel file
+    """
     DF_XLSX = pd.read_csv(CSV_path, encoding='UTF-8', sep=',')
     DF_XLSX.to_excel(XLSX_path, index = None, header=True)
+
 
 if __name__ == '__main__':
     convert_to_xml(CSV_path, XML_path)
